@@ -5,7 +5,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'syne' : ['Syne Mono', 'Inter', 'sans-serif']
+        'syne' : ['Syne Mono', 'Inter', 'sans-serif'],
+        'spinnaker' : ['Spinnaker', 'Inter', 'sans-serif'],
+        'varela' : ['Varela', 'Inter', 'sans-serif'],
+        'sunshiney' : ['Sunshiney', 'Inter', 'sans-serif']
       }
     },
   },
