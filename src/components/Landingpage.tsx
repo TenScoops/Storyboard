@@ -1,12 +1,18 @@
 import { GiDeadWood } from "react-icons/gi";
 // import { HiOutlineLightBulb } from "react-icons/hi";
-import { Brain, Enter, Lightbulb, NextButton, Pencil } from "../Icons";
+import { BiSolidCategory } from "react-icons/bi";
+import { BsQuestionCircle } from "react-icons/bs";
+import { FaSmile } from "react-icons/fa";
+import { GiBroadsword, GiScrollQuill, GiScrollUnfurled } from "react-icons/gi";
+import { IoMdJournal } from "react-icons/io";
 import Car from "../assets/car.png";
 import Field from "../assets/field.png";
 import Moongirl from "../assets/moongirl.png";
 import Orange from "../assets/orange.png";
 import Spacegirl from "../assets/spacegirl.png";
+import Spacegirl2 from "../assets/spacegirl2.png";
 import Watergirl from "../assets/watergirl.png";
+import { Brain, Enter, Lightbulb, NextButton, Pencil, Star } from "../Icons";
 const Landingpage = () => {
     return(<div className="font-syne">
         {/* navbar */}
@@ -34,6 +40,7 @@ const Landingpage = () => {
                 <Enter />
             </button>
         </div>
+        
         <div className="flex flex-col items-center">
         {/* intro */}
         <div className="flex flex-row  justify-center relative mt-10 space-x-12">
@@ -49,11 +56,18 @@ const Landingpage = () => {
             <div className="z-50 slide-left">
                 <img src={Field} width={600} className="rounded-3xl"/>
             </div>
-            <div className="w-[1500px] h-96 bg-blue-200 absolute bottom-20">
+            <div className="w-[1500px] h-96 bg-blue-200 absolute bottom-20 slide-down">
 
             </div>
         </div>
+       
+       
 
+
+        <div className="flex flex-col justify-center items-center h-32  mt-20 bg-gray-100 px-4">
+            <h1 className="text-3xl">Story creation for anyone - artists, writers, thinkers</h1>
+            <p>-"Henry"</p>
+        </div>
         {/* <div className="flex flex-col items-center"> */}
 
         {/* Create your own stories */}
@@ -66,11 +80,11 @@ const Landingpage = () => {
                 <h1 className="text-2xl">With a plethora of great viuals!</h1>
             </div>
             <div className="flex flex-row items-center space-x-12 mt-5 z-50">
-                <img src={Orange} width={400} className="ml-10"/>
+                <img src={Orange} width={400} className="ml-10 rounded-xl"/>
                 
                 <div className=" flex flex-col justify-end items-end">
                     <div className="flex flex-row mt-60">
-                        <p className="text-xl max-w-3xl font-spinnaker">
+                        <p className="text-xl max-w-3xl ">
                         “
                         After days of relentless travel, they finally stumbled upon 
                         the ruins of the forgotten relic, nestled in a valley that seemed 
@@ -88,11 +102,32 @@ const Landingpage = () => {
                 
             </div>
             
-            <div className="absolute bottom-24 w-[1360px] h-96 bg-blue-300">
+            <div className="absolute bottom-24 w-[1360px] h-96 bg-blue-200 ">
                 
             </div>
         </div>
         {/* </div> */}
+
+ {/* what is storyboard */}
+ <div className="flex flex-col mt-32 relative ">
+            <div className="z-50 space-y-3">
+                <div className="flex flex-row items-center">
+                    <h1 className="text-5xl mr-4">What is Storyboard</h1>
+                    {/* <Pencil width={"40"} height={"40"}/> */}
+                    <BsQuestionCircle size={40}/>
+                </div>
+                <p className="max-w-7xl text-2xl leading-loose">
+                Storyboard is a digital haven designed for artists, thinkers, and writers to come together and ignite their creativity. It’s a platform where users can explore vibrant galleries, connect with a like-minded community, and craft captivating stories inspired by an extensive collection of illustrations and shared ideas. Whether you’re an illustrator showcasing your work, a writer weaving narratives from visual prompts, or someone simply seeking inspiration, Storyboard offers a collaborative space to create, share, and be inspired. Dive into others' creations, contribute your unique voice, and transform scattered pieces of inspiration into compelling narratives that resonate with the world.
+                </p>
+                {/* <h1 className="text-2xl">With a plethora of great viuals!</h1> */}
+            </div>
+        </div>
+        
+
+        <div className="flex flex-col justify-center items-center h-32  mt-20 bg-gray-100 px-4">
+            <h1 className="text-3xl">Your one stop shop for inspiration</h1>
+            <p>-"John"</p>
+        </div>
 
         {/* Get Inspired */}
         <div className="flex flex-col mt-24 relative ">
@@ -143,17 +178,81 @@ const Landingpage = () => {
                 </div>
             </div>
         </div>
+         {/* Features */}
+         <div className="flex flex-col my-20">
+                <div className="flex flex-row items-center space-x-3">
+                    <h1 className="text-5xl">Features</h1>
+                    <BiSolidCategory size={35}/>
+                </div>
+                <h1 className="text-2xl mt-3">What storyboard offers</h1>
+                
+                <div className="grid grid-cols-3 mt-10 space-y-8 gap-6">
+                    <div className="flex flex-col  bg-gray-100 rounded-3xl pl-4">
+                        <GiScrollUnfurled size={55}/>
+                        <h1 className="text-2xl">Community</h1>
+                        <p className="max-w-xs text-lg">A community you can share with and be a part of</p>
+                    </div>
+                    <div className=" ">
+                        <GiBroadsword size={55}/>
+                        <h1 className="text-2xl">Inspiration</h1>
+                        <p className="max-w-sm  text-lg">Gain inspiration from galleries or other people's works</p>
+                    </div>
+                        {/* <img src={Person} width={300}/> */}
+                    <div>
+                        <GiScrollQuill size={55}/>
+                        <h1 className="text-2xl">Story creation</h1>
+                        <p className="max-w-sm text-lg">Build stories using illustrations from galleries as inspiration.</p>
+                    </div>
+                    <div>
+                        <FaSmile size={55}/>
+                        <h1 className="text-2xl">Galleries</h1>
+                        <p className="max-w-sm text-lg">Tons of images you can gain inspiration from</p>
+                    </div>
+                    <div>
+                        <IoMdJournal size={55}/>
+                        <h1 className="text-2xl">Sharing and feedback</h1>
+                        <p className="max-w-sm text-lg">Publish your stories to share with the community or keep them private</p>
+                    </div>
+                </div>
+            </div>
+
+            <div className="flex flex-col justify-center items-center h-32  mt-20 bg-gray-100 px-4">
+                <h1 className="text-3xl">A place for your creativity</h1>
+                <p>-"Ben"</p>
+            </div>
 
          {/* See what others say */}
          <div className="flex flex-col mt-24 relative ">
-            <div className="z-50 space-y-3">
+            <div className="z-50 space-y-3 mb-4">
                 <div className="flex flex-row items-center">
-                    <h1 className="text-5xl mr-4">See what other say</h1>
+                    <h1 className="text-5xl mr-4">See what others say </h1>
                     <Brain/>
                 </div>
+                <h1 className="text-2xl">Opinions on the app</h1>
             </div>
-            <div className="bg-blue-200">
-                
+            <div className="flex flex-col justify-center bg-blue-200 w-[1300px] h-[350px]">
+                <div className="flex flex-row items-center ml-10 mt-10 space-x-4">
+                    <img src={Spacegirl2} width={200}/>
+                    <div className="flex flex-col items-center">
+                        <p className="text-3xl mt-5">"This platform stimulates my creative side!... -Emmy</p>
+                        <div className="flex flex-row space-x-3 mt-5">
+                            <Star />
+                            <Star />
+                            <Star />
+                            <Star />
+                            <Star />
+                        </div>
+                    </div>
+                </div>
+                <div className="flex items-end justify-end mr-20">
+                    <NextButton />
+                </div>
+            </div>
+            <div className="flex items-center justify-center mt-20">
+                <button className="flex flex-row items-center justify-center py-2 h-12 w-36 mr-2 border border-black border-b-2 ">
+                    <h1 className="text-xl mr-2">Join us</h1>
+                    <Enter />
+                </button>
             </div>
         </div>
     </div>
