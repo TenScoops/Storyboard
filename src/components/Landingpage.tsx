@@ -9,9 +9,11 @@ import { GiScrollQuill } from "react-icons/gi";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { ImBubbles2 } from "react-icons/im";
 import { IoChatbubblesOutline } from "react-icons/io5";
+import Beanie from "../assets/beanie.png";
 import Car from "../assets/car.png";
 import Desert from "../assets/desert.png";
 import Field from "../assets/field.png";
+import Mars from "../assets/mars.png";
 import Moongirl from "../assets/moongirl.png";
 import Orange from "../assets/orange.png";
 import Spacegirl from "../assets/spacegirl.png";
@@ -22,24 +24,43 @@ const Landingpage = () => {
 
     interface storiesprops{
         image:JSX.Element,
-        story:string
-
+        story:string,
+        background:string
     }
+    interface reviewsprops{
+        image: JSX.Element,
+        review: string
+    }
+    // stories object
     const stories: storiesprops[] = [{
         image : <img src={Orange} width={400} className="ml-10 rounded-xl"/>,
-        story: "“ After days of relentless travel, they finally stumbled upon the ruins of the forgotten relic, nestled in a valley that seemed untouched by time. The sight was otherworldly—a sprawling tapestry of nature and ancient artistry. Towering crystal spires erupted from the ground, refracting the sunlight into cascades of vibrant colors that danced across the landscape. Exotic flowers of impossible hues bloomed among the crumbled stonework, their delicate petals shimmering as if kissed by starlight.”"
+        story: "“ After days of relentless travel, they finally stumbled upon the ruins of the forgotten relic, nestled in a valley that seemed untouched by time. The sight was otherworldly—a sprawling tapestry of nature and ancient artistry. Towering crystal spires erupted from the ground, refracting the sunlight into cascades of vibrant colors that danced across the landscape. Exotic flowers of impossible hues bloomed among the crumbled stonework, their delicate petals shimmering as if kissed by starlight.”",
+        background: "bg-blue-200"
     },
     {
         image : <img src={Desert} width={400} className="ml-10 rounded-xl"/>,
-        story: "“ The heat of the desert scorched everything in its path, leaving only the scattered remains of broken robots half-buried in the sand. The few that remained standing moved slowly, their mechanical limbs stiff and their once-vibrant lights now dim, as if drained by the relentless sun. Their metallic bodies, worn and weathered by time, creaked with each movement, barely clinging to the life they once had. The air was thick with silence, the desert's harsh winds sweeping over the land like a funeral march, carrying with it the scent of rust and decay.”"
+        story: "“ The heat of the desert scorched everything in its path, leaving only the scattered remains of broken robots half-buried in the sand. The few that remained standing moved slowly, their mechanical limbs stiff and their once-vibrant lights now dim, as if drained by the relentless sun. Their metallic bodies, worn and weathered by time, creaked with each movement, barely clinging to the life they once had. The air was thick with silence, the desert's harsh winds sweeping over the land like a funeral march, carrying with it the scent of rust and decay.”",
+        background: "bg-orange-100"
     }]
+    //review objects
+    const reviews: reviewsprops[] = [{
+        image:<img src={Spacegirl2} width={200} />,
+        review: "“This platform stimulates my creativity!...” -Emmy"
+    },
+    {
+        image:<img src={Beanie} width={200} className="border border-black rounded-full"/>,
+        review: "“An incredible platform for inspiration!” -Henry"
+    },
+    {
+        image:<img src={Mars} width={200} className="border border-black rounded-full"/>,
+        review: "“Allows you to make use of your imagination!” -Bella"
+    },
+    ]
 
-    // const reviews = [{
-    //     image:<img src={Spacegirl2}/>,
-    //     review: ""
-    // }]
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState<number>(0);
+    const [reviewIndex, setReviewIndex ] = useState<number>(0)
 
+   
     // Function to move to the next story
     const nextStory = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % stories.length);
@@ -54,7 +75,19 @@ const Landingpage = () => {
         };
     }, []);  // Empty dependency array ensures this only runs once when the component mounts
 ;
+    
+    // function to move to the next review
+    const nextReview = () => {
+        setReviewIndex((prevIndex)=>(prevIndex + 1) % reviews.length)
+    }
 
+    useEffect(()=>{
+        const intervalId = setInterval(nextReview, 2000)
+        return ()=>{
+            clearInterval(intervalId)
+        }
+    }, [])
+    
     return(<div className="font-syne">
         {/* navbar */}
         <div className="flex flex-row justify-between items-center h-16 ">
@@ -143,7 +176,7 @@ const Landingpage = () => {
                 </div>
             </div>
             
-            <div className="absolute bottom-24 w-[1360px] h-96 bg-blue-200 ">
+            <div className={`absolute bottom-24 w-[1360px] h-96 ${stories[currentIndex].background} `}>
                 
             </div>
         </div>
@@ -273,9 +306,10 @@ const Landingpage = () => {
             </div>
             <div className="flex flex-col justify-center bg-blue-200 w-[1300px] h-[350px]">
                 <div className="flex flex-row items-center ml-10 mt-10 space-x-4">
-                    <img src={Spacegirl2} width={200}/>
+                    {reviews[reviewIndex].image}
+                    
                     <div className="flex flex-col items-center">
-                        <p className="text-3xl mt-5">"This platform stimulates my creative side!... -Emmy</p>
+                        <p className="text-3xl mt-5">{reviews[reviewIndex].review}</p>
                         <div className="flex flex-row space-x-3 mt-5">
                             <Star />
                             <Star />
@@ -285,12 +319,15 @@ const Landingpage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex items-end justify-end mr-20">
+                <button 
+                    onClick={nextReview}
+                    className="flex items-end justify-end mr-20">
                     <NextButton />
-                </div>
+                </button>
             </div>
             <div className="flex items-center justify-center mt-20 mb-20">
-                <button className="flex flex-row items-center justify-center py-2 h-12 w-36 mr-2 border border-black border-b-2 ">
+                <button 
+                    className="flex flex-row items-center justify-center py-2 h-12 w-36 mr-2 border border-black border-b-2 ">
                     <h1 className="text-xl mr-2">Join us</h1>
                     <Enter />
                 </button>
