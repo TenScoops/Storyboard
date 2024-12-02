@@ -69,7 +69,7 @@ const Landingpage = () => {
 
     // Auto-scroll function 
     useEffect(() => {
-        const intervalId = setInterval(nextStory, 20000);  //change story after alotted time
+        const intervalId = setInterval(nextStory, 7000);  //change story after alotted time
 
         return () => {
             clearInterval(intervalId);  // Cleanup the interval 
