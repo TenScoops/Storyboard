@@ -57,6 +57,7 @@ const Landingpage = () => {
     },
     ]
 
+    // will keep track of the current index in the arrays of objects
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const [reviewIndex, setReviewIndex ] = useState<number>(0)
 
@@ -66,14 +67,14 @@ const Landingpage = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % stories.length);
     };
 
-    // Auto-scroll function that runs every 3 seconds
+    // Auto-scroll function 
     useEffect(() => {
-        const intervalId = setInterval(nextStory, 20000);  // Change story every 3 seconds
+        const intervalId = setInterval(nextStory, 20000);  //change story after alotted time
 
         return () => {
-            clearInterval(intervalId);  // Cleanup the interval when the component is unmounted or re-rendered
+            clearInterval(intervalId);  // Cleanup the interval 
         };
-    }, []);  // Empty dependency array ensures this only runs once when the component mounts
+    }, []);  
 ;
     
     // function to move to the next review
