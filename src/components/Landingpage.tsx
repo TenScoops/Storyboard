@@ -1,11 +1,16 @@
 import { GiDeadWood } from "react-icons/gi";
 // import { HiOutlineLightBulb } from "react-icons/hi";
+import { useEffect, useState } from "react";
+import { AiFillPicture } from "react-icons/ai";
 import { BiSolidCategory } from "react-icons/bi";
 import { BsQuestionCircle } from "react-icons/bs";
-import { FaSmile } from "react-icons/fa";
-import { GiBroadsword, GiScrollQuill, GiScrollUnfurled } from "react-icons/gi";
-import { IoMdJournal } from "react-icons/io";
+import { FaPeopleGroup } from "react-icons/fa6";
+import { GiScrollQuill } from "react-icons/gi";
+import { HiOutlineLightBulb } from "react-icons/hi";
+import { ImBubbles2 } from "react-icons/im";
+import { IoChatbubblesOutline } from "react-icons/io5";
 import Car from "../assets/car.png";
+import Desert from "../assets/desert.png";
 import Field from "../assets/field.png";
 import Moongirl from "../assets/moongirl.png";
 import Orange from "../assets/orange.png";
@@ -14,6 +19,42 @@ import Spacegirl2 from "../assets/spacegirl2.png";
 import Watergirl from "../assets/watergirl.png";
 import { Brain, Enter, Lightbulb, NextButton, Pencil, Star } from "../Icons";
 const Landingpage = () => {
+
+    interface storiesprops{
+        image:JSX.Element,
+        story:string
+
+    }
+    const stories: storiesprops[] = [{
+        image : <img src={Orange} width={400} className="ml-10 rounded-xl"/>,
+        story: "“ After days of relentless travel, they finally stumbled upon the ruins of the forgotten relic, nestled in a valley that seemed untouched by time. The sight was otherworldly—a sprawling tapestry of nature and ancient artistry. Towering crystal spires erupted from the ground, refracting the sunlight into cascades of vibrant colors that danced across the landscape. Exotic flowers of impossible hues bloomed among the crumbled stonework, their delicate petals shimmering as if kissed by starlight.”"
+    },
+    {
+        image : <img src={Desert} width={400} className="ml-10 rounded-xl"/>,
+        story: "“ The heat of the desert scorched everything in its path, leaving only the scattered remains of broken robots half-buried in the sand. The few that remained standing moved slowly, their mechanical limbs stiff and their once-vibrant lights now dim, as if drained by the relentless sun. Their metallic bodies, worn and weathered by time, creaked with each movement, barely clinging to the life they once had. The air was thick with silence, the desert's harsh winds sweeping over the land like a funeral march, carrying with it the scent of rust and decay.”"
+    }]
+
+    // const reviews = [{
+    //     image:<img src={Spacegirl2}/>,
+    //     review: ""
+    // }]
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    // Function to move to the next story
+    const nextStory = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % stories.length);
+    };
+
+    // Auto-scroll function that runs every 3 seconds
+    useEffect(() => {
+        const intervalId = setInterval(nextStory, 20000);  // Change story every 3 seconds
+
+        return () => {
+            clearInterval(intervalId);  // Cleanup the interval when the component is unmounted or re-rendered
+        };
+    }, []);  // Empty dependency array ensures this only runs once when the component mounts
+;
+
     return(<div className="font-syne">
         {/* navbar */}
         <div className="flex flex-row justify-between items-center h-16 ">
@@ -56,7 +97,7 @@ const Landingpage = () => {
             <div className="z-50 slide-left">
                 <img src={Field} width={600} className="rounded-3xl"/>
             </div>
-            <div className="w-[1500px] h-96 bg-blue-200 absolute bottom-20 slide-down">
+            <div className="w-[1500px] h-96 bg-blue-200 absolute bottom-20">
 
             </div>
         </div>
@@ -79,27 +120,27 @@ const Landingpage = () => {
                 </div>
                 <h1 className="text-2xl">With a plethora of great viuals!</h1>
             </div>
+            
             <div className="flex flex-row items-center space-x-12 mt-5 z-50">
-                <img src={Orange} width={400} className="ml-10 rounded-xl"/>
-                
-                <div className=" flex flex-col justify-end items-end">
-                    <div className="flex flex-row mt-60">
-                        <p className="text-xl max-w-3xl ">
-                        “
-                        After days of relentless travel, they finally stumbled upon 
-                        the ruins of the forgotten relic, nestled in a valley that seemed 
-                        untouched by time. The sight was otherworldly—a sprawling tapestry 
-                        of nature and ancient artistry. Towering crystal spires erupted from 
-                        the ground, refracting the sunlight into cascades of vibrant colors 
-                        that danced across the landscape. Exotic flowers of impossible hues 
-                        bloomed among the crumbled stonework, their delicate petals shimmering 
-                        as if kissed by starlight.”
+                {stories[currentIndex].image}
+
+                <div className="flex flex-col justify-end items-end">
+                    <div className="flex flex-row ">
+                        <p className="text-xl max-w-3xl">
+                            {stories[currentIndex].story}
                         </p>
-                        {/* <Pencil width={"50"} height={"50"}/> */}
+                        <div className="flex items-end">
+                        <button
+                        onClick={nextStory}
+                        className="mr-20 "
+                        aria-label="Next Story"
+                        >
+                        <NextButton />
+                        </button>
+                        </div>
                     </div>
-                    <button className="mr-20 mt-32"><NextButton/></button>
+                    
                 </div>
-                
             </div>
             
             <div className="absolute bottom-24 w-[1360px] h-96 bg-blue-200 ">
@@ -187,13 +228,13 @@ const Landingpage = () => {
                 <h1 className="text-2xl mt-3">What storyboard offers</h1>
                 
                 <div className="grid grid-cols-3 mt-10 space-y-8 gap-6">
-                    <div className="flex flex-col  bg-gray-100 rounded-3xl pl-4">
-                        <GiScrollUnfurled size={55}/>
+                    <div className="flex flex-col justify-center  bg-gray-100 rounded-3xl pl-4">
+                        <FaPeopleGroup size={55}/>
                         <h1 className="text-2xl">Community</h1>
                         <p className="max-w-xs text-lg">A community you can share with and be a part of</p>
                     </div>
                     <div className=" ">
-                        <GiBroadsword size={55}/>
+                        <HiOutlineLightBulb size={55}/>
                         <h1 className="text-2xl">Inspiration</h1>
                         <p className="max-w-sm  text-lg">Gain inspiration from galleries or other people's works</p>
                     </div>
@@ -204,12 +245,12 @@ const Landingpage = () => {
                         <p className="max-w-sm text-lg">Build stories using illustrations from galleries as inspiration.</p>
                     </div>
                     <div>
-                        <FaSmile size={55}/>
+                        <AiFillPicture size={55}/>
                         <h1 className="text-2xl">Galleries</h1>
                         <p className="max-w-sm text-lg">Tons of images you can gain inspiration from</p>
                     </div>
                     <div>
-                        <IoMdJournal size={55}/>
+                        <ImBubbles2 size={50}/>
                         <h1 className="text-2xl">Sharing and feedback</h1>
                         <p className="max-w-sm text-lg">Publish your stories to share with the community or keep them private</p>
                     </div>
@@ -226,7 +267,7 @@ const Landingpage = () => {
             <div className="z-50 space-y-3 mb-4">
                 <div className="flex flex-row items-center">
                     <h1 className="text-5xl mr-4">See what others say </h1>
-                    <Brain/>
+                    <IoChatbubblesOutline size={45}/>
                 </div>
                 <h1 className="text-2xl">Opinions on the app</h1>
             </div>
@@ -248,7 +289,7 @@ const Landingpage = () => {
                     <NextButton />
                 </div>
             </div>
-            <div className="flex items-center justify-center mt-20">
+            <div className="flex items-center justify-center mt-20 mb-20">
                 <button className="flex flex-row items-center justify-center py-2 h-12 w-36 mr-2 border border-black border-b-2 ">
                     <h1 className="text-xl mr-2">Join us</h1>
                     <Enter />
