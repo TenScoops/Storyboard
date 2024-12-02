@@ -83,7 +83,7 @@ const Landingpage = () => {
     }
 
     useEffect(()=>{
-        const intervalId = setInterval(nextReview, 2000)
+        const intervalId = setInterval(nextReview, 3700)
         return ()=>{
             clearInterval(intervalId)
         }
@@ -166,7 +166,6 @@ const Landingpage = () => {
                         <div className="flex items-end">
                         <button
                         onClick={nextStory}
-                        className="mr-20 "
                         aria-label="Next Story"
                         >
                         <NextButton />
