@@ -101,7 +101,7 @@ const Landingpage = () => {
             <div className="flex flex-row items-center space-x-16">
                 <div className="flex flex-row items-center space-x-4 ml-2">
                     <GiDeadWood size={45}/>
-                    <h1 className="text-3xl">
+                    <h1 className=" text-2xl sm:text-3xl">
                         Storyboard
                     </h1>
                 </div>
@@ -152,22 +152,33 @@ const Landingpage = () => {
         <div className="flex flex-col items-center">
         {/* intro */}
         <div className="flex flex-col lg:flex-row w-full items-center lg:items-start justify-center relative mt-10 lg:space-x-6 xl:space-x-12">
-            <div className="z-50 mt-16 slide-right space-y-6 lg:space-y-12">
-                <h1 className="text-5xl md:text-6xl font-spinnaker">For</h1>
-                <h1 className="text-7xl md:text-[110px] font-sunshiney">Artists</h1>
-                <h1 className="text-7xl md:text-[90px] font-varela italic">Thinkers</h1>
-                <h1 className="text-7xl md:text-[110px] font-syne">Writers</h1>
-            </div>
-            <div className="z-50 slide-down hidden xl:block">
-                <Lightbulb />
-            </div>
-            <div className="z-50 slide-left">
-                <img src={Field} width={600} className="rounded-3xl "/>
-            </div>
-            <div className="  w-[1500px] h-96 bg-blue-200 absolute bottom-20 ">
+  {/* Text Section */}
+  <div className="z-50 mt-16 slide-right space-y-6 lg:space-y-12 text-center lg:text-left">
+    <h1 className="text-5xl md:text-6xl font-spinnaker">For</h1>
+    <h1 className="text-5xl sm:text-7xl md:text-[110px] font-sunshiney">Artists</h1>
+    <h1 className="text-5xl sm:text-7xl md:text-[90px] font-varela italic">Thinkers</h1>
+    <h1 className="text-5xl sm:text-7xl md:text-[110px] font-syne">Writers</h1>
+  </div>
 
-            </div>
-        </div>
+  {/* Lightbulb Icon */}
+  <div className="z-50 slide-down hidden md:block xl:block">
+    <Lightbulb />
+  </div>
+
+  {/* Image Section */}
+  <div className="z-50 slide-left mt-8 lg:mt-0">
+    <img 
+      src={Field} 
+      className="w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] rounded-3xl"
+      alt="Field" 
+    />
+  </div>
+
+  {/* Background Shape */}
+  <div className="max-w-full md:w-[95%] lg:w-[1400px] h-96 bg-blue-200 absolute bottom-10 lg:bottom-20">
+  </div>
+</div>
+
        
        
 
@@ -183,8 +194,8 @@ const Landingpage = () => {
             {/* Title Section */}
             <div className="z-50 space-y-3 px-4">
                 <div className="flex space-x-3 flex-row md:items-center">
-                    <h1 className="text-3xl sm:text-5xl  mr-0 md:mr-4">Create your own stories</h1>
-                    <div className=""><Pencil width={"40"} height={"40"} /></div>
+                    <h1 className="text-3xl sm:text-5xl  mr-0 md:mr-4">Create your wn stories</h1>
+                    <div className="hidden md:block"><Pencil width={"40"} height={"40"} /></div>
                 </div>
                 <h1 className="text-lg sm:text-2xl">With a plethora of great visuals!</h1>
             </div>
@@ -219,10 +230,10 @@ const Landingpage = () => {
         {/* what is storyboard */}
         <div className="flex flex-col mt-32 relative px-4">
             <div className="z-50 space-y-3">
-                <div className="flex flex-row items-center ">
+                <div className="flex flex-row items-center mb-4 ">
                     <h1 className="text-3xl sm:text-5xl mr-4">What is Storyboard</h1>
                     {/* <Pencil width={"40"} height={"40"}/> */}
-                    <BsQuestionCircle size={40}/>
+                    <BsQuestionCircle size={40} className="hidden md:block"/>
                 </div>
                 <p className="max-w-7xl text-md sm:text-xl md:text-2xl leading-loose">
                 Storyboard is a digital haven designed for artists, thinkers, and writers to come together and ignite their creativity. It’s a platform where users can explore vibrant galleries, connect with a like-minded community, and craft captivating stories inspired by an extensive collection of illustrations and shared ideas. Whether you’re an illustrator showcasing your work, a writer weaving narratives from visual prompts, or someone simply seeking inspiration, Storyboard offers a collaborative space to create, share, and be inspired. Dive into others' creations, contribute your unique voice, and transform scattered pieces of inspiration into compelling narratives that resonate with the world.
@@ -243,7 +254,7 @@ const Landingpage = () => {
             <div className="z-50 space-y-3 mb-4 px-4">
                 <div className="flex flex-row items-center  sm:justify-start">
                     <h1 className="text-3xl sm:text-5xl mr-4">Get inspired </h1>
-                    <Brain/>
+                    <div className="hidden md:block"><Brain/></div>
                 </div>
                 <h1 className="text-xl sm:text-2xl sm:text-start">Be part of and get inspired by a great community</h1>
             </div>
@@ -296,7 +307,7 @@ const Landingpage = () => {
          <div className="flex flex-col my-20">
                 <div className="flex flex-row items-center space-x-3 px-4">
                     <h1 className="text-3xl sm:text-5xl">Features</h1>
-                    <BiSolidCategory size={35}/>
+                    <div className="hidden md:block"><BiSolidCategory size={35}/></div>
                 </div>
                 <h1 className="text-xl sm:text-2xl mt-3 px-4">What storyboard offers</h1>
                 
@@ -340,7 +351,7 @@ const Landingpage = () => {
             <div className="z-50 space-y-3 mb-4 px-4">
                 <div className="flex flex-row items-center">
                     <h1 className="text-3xl sm:text-5xl mr-4">See what others say </h1>
-                    <IoChatbubblesOutline className="" size={45}/>
+                    <IoChatbubblesOutline className="hidden md:block" size={45}/>
                 </div>
                 <h1 className="text-xl sm:text-2xl">Opinions on the app</h1>
             </div>
