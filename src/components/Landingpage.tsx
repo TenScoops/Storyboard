@@ -9,6 +9,7 @@ import { GiScrollQuill } from "react-icons/gi";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { ImBubbles2 } from "react-icons/im";
 import { IoChatbubblesOutline } from "react-icons/io5";
+import { RxHamburgerMenu } from "react-icons/rx";
 import Beanie from "../assets/beanie.png";
 import Car from "../assets/car.png";
 import Desert from "../assets/desert.png";
@@ -57,6 +58,7 @@ const Landingpage = () => {
     },
     ]
 
+    const[nav,setNav] = useState(false)
     // will keep track of the current index in the arrays of objects
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const [reviewIndex, setReviewIndex ] = useState<number>(0)
@@ -89,6 +91,10 @@ const Landingpage = () => {
         }
     }, [])
     
+    const navClick = (id:string) =>{
+        setNav(false)
+        document.getElementById(id)?.scrollIntoView({behavior: "smooth"})
+    }
     return(<div className="font-syne">
         {/* navbar */}
         <div className="flex flex-row justify-between items-center h-16 ">
@@ -99,23 +105,50 @@ const Landingpage = () => {
                         Storyboard
                     </h1>
                 </div>
-                <nav>
+                <nav className="hidden md:block">
                     <ul className="flex flex-row space-x-8">
-                        <li className="text-xl">
+                        <li onClick={()=>document.getElementById("stories")?.scrollIntoView({ behavior: "smooth" })} 
+                            className="text-xl hover:underline cursor-pointer">
                             Stories
                         </li>
-                        <li className="text-xl">
+                        <li onClick={()=>document.getElementById("community")?.scrollIntoView({ behavior: "smooth" })}
+                            className="text-xl hover:underline cursor-pointer">
                             Community
                         </li>
                     </ul>
                 </nav>
             </div>
-            <button className="flex flex-row items-center justify-center py-2 h-12 w-36 mr-2 border border-black border-b-2 ">
+            <button className="hidden md:flex flex-row items-center justify-center py-2 h-12 w-36 mr-2 border border-black border-b-2 ">
                 <h1 className="text-xl mr-2">Log in</h1>
                 <Enter />
             </button>
+            <button onClick={()=>{setNav(true)}} className="md:hidden mr-1">
+                <RxHamburgerMenu size={40}/>
+            </button>
         </div>
         
+
+        {/* small nav - mobile */}
+        <div className={`${nav?'block':'hidden'} flex items-center justify-center inset-0 fixed bg-white z`}>
+            <button onClick={()=>{setNav(false)}} className=" absolute right-1 top-3">
+                <RxHamburgerMenu size={40}/>
+            </button>
+
+            <nav >
+                <ul className="space-y-4">
+                    <li onClick={()=>navClick("stories")}
+                        className="text-xl hover:underline cursor-pointer">
+                        Stories
+                    </li>
+                    <li onClick={()=>navClick("community")}
+                        className="text-xl hover:underline cursor-pointer">
+                        Community
+                    </li>
+                </ul>
+            </nav>
+          
+        </div>
+
         <div className="flex flex-col items-center">
         {/* intro */}
         <div className="flex flex-col lg:flex-row w-full items-center lg:items-start justify-center relative mt-10 lg:space-x-6 xl:space-x-12">
@@ -146,45 +179,45 @@ const Landingpage = () => {
        
 
         {/* Create your own stories */}
-<div className="flex flex-col mt-24 relative lg:px-10">
-    {/* Title Section */}
-    <div className="z-50 space-y-3 px-4">
-        <div className="flex space-x-3 flex-row md:items-center">
-            <h1 className="text-3xl sm:text-5xl  mr-0 md:mr-4">Create your own stories</h1>
-            <div className=""><Pencil width={"40"} height={"40"} /></div>
-        </div>
-        <h1 className="text-lg sm:text-2xl">With a plethora of great visuals!</h1>
-    </div>
-    
-    {/* Stories Section */}
-    <div className="flex flex-col lg:flex-row items-center md:space-x-12 mt-5 z-50">
-        <div className="w-full md:w-auto flex justify-center">
-            {stories[currentIndex].image}
-        </div>
+        <div id="stories" className="flex flex-col mt-24 relative lg:px-10">
+            {/* Title Section */}
+            <div className="z-50 space-y-3 px-4">
+                <div className="flex space-x-3 flex-row md:items-center">
+                    <h1 className="text-3xl sm:text-5xl  mr-0 md:mr-4">Create your own stories</h1>
+                    <div className=""><Pencil width={"40"} height={"40"} /></div>
+                </div>
+                <h1 className="text-lg sm:text-2xl">With a plethora of great visuals!</h1>
+            </div>
+            
+            {/* Stories Section */}
+            <div className="flex flex-col lg:flex-row items-center md:space-x-12 mt-5 z-50">
+                <div className="w-full md:w-auto flex justify-center">
+                    {stories[currentIndex].image}
+                </div>
 
-        <div className="flex flex-col justify-end items-end w-full md:w-auto mt-5 md:mt-0">
-            <div className="flex flex-col items-end w-full lg:mt-20">
-                <p className="text-md md:text-xl max-w-full md:max-w-3xl text-center md:text-left">
-                    {stories[currentIndex].story}
-                </p>
-                <div className="flex justify-center items-end md:justify-end mt-5 md:mt-0 mr-5">
-                    <button onClick={nextStory} aria-label="Next Story">
-                        <NextButton />
-                    </button>
+                <div className="flex flex-col justify-end items-end w-full md:w-auto mt-5 md:mt-0">
+                    <div className="flex flex-col items-end w-full lg:mt-20">
+                        <p className="text-md md:text-xl max-w-full md:max-w-3xl text-center md:text-left">
+                            {stories[currentIndex].story}
+                        </p>
+                        <div className="flex justify-center items-end md:justify-end mt-5 md:mt-0 mr-5">
+                            <button onClick={nextStory} aria-label="Next Story">
+                                <NextButton />
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
+            
+            {/* Background Section */}
+            <div className={`absolute bottom-14 sm:bottom-10 lg:bottom-20  md w-full md:max-w-[1360px] h-96 md:h-96 ${stories[currentIndex].background}`}>
+            </div>
         </div>
-    </div>
-    
-    {/* Background Section */}
-    <div className={`absolute bottom-14 sm:bottom-10 lg:bottom-20  md w-full md:max-w-[1360px] h-96 md:h-96 ${stories[currentIndex].background}`}>
-    </div>
-</div>
 
      
 
- {/* what is storyboard */}
- <div className="flex flex-col mt-32 relative px-4">
+        {/* what is storyboard */}
+        <div className="flex flex-col mt-32 relative px-4">
             <div className="z-50 space-y-3">
                 <div className="flex flex-row items-center ">
                     <h1 className="text-3xl sm:text-5xl mr-4">What is Storyboard</h1>
@@ -203,8 +236,10 @@ const Landingpage = () => {
             <h1 className=" text-3xl text-center ">Your one stop shop for inspiration</h1>
             <span className="">-"John"</span>
         </div>
-        {/* Get Inspired */}
-        <div className="flex flex-col mt-24 relative ">
+
+
+        {/* Get Inspired - community  */}
+        <div id="community" className="flex flex-col mt-24 relative ">
             <div className="z-50 space-y-3 mb-4 px-4">
                 <div className="flex flex-row items-center  sm:justify-start">
                     <h1 className="text-3xl sm:text-5xl mr-4">Get inspired </h1>
@@ -212,49 +247,49 @@ const Landingpage = () => {
                 </div>
                 <h1 className="text-xl sm:text-2xl sm:text-start">Be part of and get inspired by a great community</h1>
             </div>
-        <div className="bg-gray-200 w-full lg:w-[1300px] md:max-w-[1300px] mx-auto md:h-[650px] p-5">
-            <div className="flex flex-col md:flex-row justify-center items-center md:space-x-10">
-                <img src={Car} className="rounded-xl w-full md:w-[400px] max-w-xs md:max-w-sm" />
-                <div className="space-y-8 flex flex-col justify-center w-full md:max-w-[500px] mt-5 md:mt-0">
-                    {/* Clara Message */}
-                    <div className="xs:w-96 md:w-auto">
-                        <h1 className="text-sm md:text-base">Clara - 10:53 am</h1>
-                        <div className="bg-gray-100 flex flex-row items-center space-x-3 p-3 rounded-2xl">
-                            <img src={Spacegirl} className="w-12 h-12 md:w-16 md:h-16 rounded-full" />
-                            <h1 className="text-sm md:text-lg">This is a great story and visuals!</h1>
-                        </div>
-                    </div>
-                    {/* Alice Response */}
-                    <div className="w-full flex justify-end">
-                        <div className="flex flex-col items-end">
-                            <h1 className="text-sm md:text-base">Alice - 11:05 am</h1>
-                            <div className="bg-gray-100 flex flex-row items-center justify-end space-x-3 p-3 rounded-2xl w-full md:max-w-[384px]">
-                                <h1 className="text-sm md:text-lg">Thank you so much!</h1>
-                                <img src={Watergirl} className="w-12 h-12 md:w-16 md:h-16 rounded-full" />
+            <div className="bg-gray-200 w-full lg:w-[1300px] md:max-w-[1300px] mx-auto md:h-[650px] p-5">
+                <div className="flex flex-col md:flex-row justify-center items-center md:space-x-10">
+                    <img src={Car} className="rounded-xl w-full md:w-[400px] max-w-xs md:max-w-sm" />
+                    <div className="space-y-8 flex flex-col justify-center w-full md:max-w-[500px] mt-5 md:mt-0">
+                        {/* Clara Message */}
+                        <div className="xs:w-96 md:w-auto">
+                            <h1 className="text-sm md:text-base">Clara - 10:53 am</h1>
+                            <div className="bg-gray-100 flex flex-row items-center space-x-3 p-3 rounded-2xl">
+                                <img src={Spacegirl} className="w-12 h-12 md:w-16 md:h-16 rounded-full" />
+                                <h1 className="text-sm md:text-lg">This is a great story and visuals!</h1>
                             </div>
                         </div>
-                    </div>
-                    {/* John Message */}
-                    <div className="xs:w-96 md:w-auto">
-                        <h1 className="text-sm md:text-base">John - 10:57 am</h1>
-                        <div className="bg-gray-100 flex flex-row items-center space-x-3 p-3 rounded-2xl">
-                            <img src={Moongirl} className="w-12 h-12 md:w-16 md:h-16 rounded-full" />
-                            <h1 className="text-sm md:text-lg">Really great and love the story!</h1>
+                        {/* Alice Response */}
+                        <div className="w-full flex justify-end">
+                            <div className="flex flex-col items-end">
+                                <h1 className="text-sm md:text-base">Alice - 11:05 am</h1>
+                                <div className="bg-gray-100 flex flex-row items-center justify-end space-x-3 p-3 rounded-2xl w-full md:max-w-[384px]">
+                                    <h1 className="text-sm md:text-lg">Thank you so much!</h1>
+                                    <img src={Watergirl} className="w-12 h-12 md:w-16 md:h-16 rounded-full" />
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    {/* Another Alice Response */}
-                    <div className="w-full flex justify-end">
-                        <div className="flex flex-col items-end">
-                            <h1 className="text-sm md:text-base">Alice - 11:06 am</h1>
-                            <div className="bg-gray-100 flex flex-row items-center justify-end space-x-3 p-3 rounded-2xl w-full md:max-w-[384px]">
-                                <h1 className="text-sm md:text-lg">Thank you, I appreciate it!</h1>
-                                <img src={Watergirl} className="w-12 h-12 md:w-16 md:h-16 rounded-full" />
+                        {/* John Message */}
+                        <div className="xs:w-96 md:w-auto">
+                            <h1 className="text-sm md:text-base">John - 10:57 am</h1>
+                            <div className="bg-gray-100 flex flex-row items-center space-x-3 p-3 rounded-2xl">
+                                <img src={Moongirl} className="w-12 h-12 md:w-16 md:h-16 rounded-full" />
+                                <h1 className="text-sm md:text-lg">Really great and love the story!</h1>
+                            </div>
+                        </div>
+                        {/* Another Alice Response */}
+                        <div className="w-full flex justify-end">
+                            <div className="flex flex-col items-end">
+                                <h1 className="text-sm md:text-base">Alice - 11:06 am</h1>
+                                <div className="bg-gray-100 flex flex-row items-center justify-end space-x-3 p-3 rounded-2xl w-full md:max-w-[384px]">
+                                    <h1 className="text-sm md:text-lg">Thank you, I appreciate it!</h1>
+                                    <img src={Watergirl} className="w-12 h-12 md:w-16 md:h-16 rounded-full" />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
         </div>
          {/* Features */}

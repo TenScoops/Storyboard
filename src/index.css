@@ -13,6 +13,10 @@ animation: slideLeft 1.1s ease-out forwards;
     animation: slideDown 1.1s ease-out forwards;
   }
 
+  .z{
+    z-index: 4999;
+  }
+
 @keyframes slideDown {
 0% {
     transform: translateY(-50px); /* Start slightly below the original position */
