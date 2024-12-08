@@ -151,32 +151,32 @@ const Landingpage = () => {
 
         <div className="flex flex-col items-center">
         {/* intro */}
-        <div className="flex flex-col lg:flex-row w-full items-center lg:items-start justify-center relative mt-10 lg:space-x-6 xl:space-x-12">
-  {/* Text Section */}
-  <div className="z-50 mt-16 slide-right space-y-6 lg:space-y-12 text-center lg:text-left">
-    <h1 className="text-5xl md:text-6xl font-spinnaker">For</h1>
-    <h1 className="text-5xl sm:text-7xl md:text-[110px] font-sunshiney">Artists</h1>
-    <h1 className="text-5xl sm:text-7xl md:text-[90px] font-varela italic">Thinkers</h1>
-    <h1 className="text-5xl sm:text-7xl md:text-[110px] font-syne">Writers</h1>
-  </div>
+        <div className="flex flex-col lg2:flex-row w-full items-center lg2:items-start justify-center relative mt-20 lg2:space-x-6 xl:space-x-12">
+            {/* Text Section */}
+            <div className="z-50 lg:mt-16 slide-right space-y-6 lg:space-y-12 text-center lg2:text-left">
+                <h1 className="text-5xl md:text-6xl font-spinnaker">For</h1>
+                <h1 className="text-5xl sm:text-7xl md:text-[110px] font-sunshiney">Artists</h1>
+                <h1 className="text-5xl sm:text-7xl md:text-[90px] font-varela italic">Thinkers</h1>
+                <h1 className="text-5xl sm:text-7xl md:text-[110px] font-syne">Writers</h1>
+            </div>
 
-  {/* Lightbulb Icon */}
-  <div className="z-50 slide-down hidden md:block xl:block">
-    <Lightbulb />
-  </div>
+            {/* Lightbulb Icon */}
+            <div className="z-50 slide-down hidden md:block xl:block lg:mb-3 lg2:mb-0">
+                <Lightbulb />
+            </div>
 
-  {/* Image Section */}
-  <div className="z-50 slide-left mt-8 lg:mt-0">
-    <img 
-      src={Field} 
-      className="w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] rounded-3xl"
-      alt="Field" 
-    />
-  </div>
+            {/* Image Section */}
+            <div className="z-50 slide-left mt-8 lg:mt-0">
+                <img 
+                src={Field} 
+                className="w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] rounded-3xl"
+                alt="Field" 
+                />
+            </div>
 
-  {/* Background Shape */}
-  <div className="max-w-full md:w-[95%] lg:w-[1400px] h-96 bg-blue-200 absolute bottom-10 lg:bottom-20">
-  </div>
+            {/* Background Shape */}
+            <div className="max-w-full md:w-[95%] lg:w-[1400px] h-96 bg-blue-200 absolute bottom-10 lg:bottom-20">
+            </div>
 </div>
 
        
@@ -194,7 +194,7 @@ const Landingpage = () => {
             {/* Title Section */}
             <div className="z-50 space-y-3 px-4">
                 <div className="flex space-x-3 flex-row md:items-center">
-                    <h1 className="text-3xl sm:text-5xl  mr-0 md:mr-4">Create your wn stories</h1>
+                    <h1 className="text-3xl sm:text-5xl  mr-0 md:mr-4">Create your own stories</h1>
                     <div className="hidden md:block"><Pencil width={"40"} height={"40"} /></div>
                 </div>
                 <h1 className="text-lg sm:text-2xl">With a plethora of great visuals!</h1>
@@ -221,7 +221,7 @@ const Landingpage = () => {
             </div>
             
             {/* Background Section */}
-            <div className={`absolute bottom-14 sm:bottom-10 lg:bottom-20  md w-full md:max-w-[1360px] h-96 md:h-96 ${stories[currentIndex].background}`}>
+            <div className={`absolute bottom-14 sm:bottom-3 md:bottom-6 lg:bottom-8 lg2:bottom-14 xl:bottom-16  md w-full md:max-w-[1360px] h-[420px]  ${stories[currentIndex].background}`}>
             </div>
         </div>
 
