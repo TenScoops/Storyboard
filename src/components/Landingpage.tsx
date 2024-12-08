@@ -151,7 +151,7 @@ const Landingpage = () => {
 
         <div className="flex flex-col items-center">
         {/* intro */}
-        <div className="flex flex-col lg2:flex-row w-full items-center lg2:items-start justify-center relative mt-20 lg2:space-x-6 xl:space-x-12">
+        <div className="flex flex-col lg2:flex-row w-full items-center lg2:items-start justify-center relative mt-16 lg2:space-x-6 xl:space-x-12">
             {/* Text Section */}
             <div className="z-50 lg:mt-16 slide-right space-y-6 lg:space-y-12 text-center lg2:text-left">
                 <h1 className="text-5xl md:text-6xl font-spinnaker">For</h1>
